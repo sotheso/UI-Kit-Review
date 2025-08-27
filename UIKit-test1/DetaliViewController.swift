@@ -8,11 +8,29 @@
 import UIKit
 
 class DetaliViewController: UIViewController {
-
+    @IBOutlet var imageView: UIImageView!
+    var selectImage: String!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = selectImage
+        navigationItem.largeTitleDisplayMode = .never
 
-        // Do any additional setup after loading the view.
+        if let imageLoad = selectImage {
+            imageView.image = UIImage(named : imageLoad)
+        }
+    }
+    
+    
+    // tabBar balaye safhe
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnTap = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.hidesBarsOnTap = false
     }
     
 
